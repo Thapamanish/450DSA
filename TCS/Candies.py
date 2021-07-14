@@ -9,7 +9,21 @@ Given,
 
 N=10, where N is NUMBER OF CANDIES AVAILABLE
 
-K =< 5, where k is number of minimum candies that must be inside JAR ever.'''
+K =< 5, where k is number of minimum candies that must be inside JAR ever.
+Example 1:(N = 10, k =< 5)
+
+Input Value
+3
+Output Value
+NUMBER OF CANDIES SOLD : 3
+NUMBER OF CANDIES AVAILABLE : 7
+Example : (N=10, k<=5)
+
+Input Value
+0
+Output Value
+INVALID INPUT
+NUMBER OF CANDIES LEFT : 10'''
 
 
 N = 10
