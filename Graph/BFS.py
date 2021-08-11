@@ -6,6 +6,7 @@ class Graph:
 
     def addEdge(self, u, v):
         self.graph[u].append(v)
+        self.graph[v].append(u)
 
     def bfsUtil(self, v, visited):
         queue = []
@@ -18,7 +19,7 @@ class Graph:
             for neighbor in self.graph[s]:
                 if neighbor not in visited:
                     queue.append(neighbor)
-                    visited.add(neigbhor)
+                    visited.add(neighbor)
 
 
     def bfs(self):

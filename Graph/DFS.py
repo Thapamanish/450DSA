@@ -1,10 +1,13 @@
+from collections import defaultdict
+
 class Graph:
     def __init__(self):
         self.graph = defaultdict(list)
 
 
-    def addEdges(self, u, v):
+    def addEdge(self, u, v):
         self.graph[u].append(v)
+        self.graph[v].append(u)
 
 
     def dfsUtil(self, v, visited):
@@ -26,9 +29,9 @@ class Graph:
 
 
 g = Graph()
-g.addEdges(1,2)
-g.addEdges(2,4)
-g.addEdges(2,7)
-g.addEdges(4,1)
-g.addEdges(6,7)
+g.addEdge(1,2)
+g.addEdge(2,4)
+g.addEdge(2,7)
+g.addEdge(4,1)
+g.addEdge(6,7)
 g.dfs()
