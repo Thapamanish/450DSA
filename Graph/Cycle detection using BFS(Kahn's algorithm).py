@@ -1,3 +1,4 @@
+  
 from collections import defaultdict 
 
 class Graph:
@@ -9,7 +10,7 @@ class Graph:
         self.graph[u].append(v)
 
 
-    def topologicalOrder(self):
+    def cycleDetect(self):
         inDegree = [0] * self.V
 
         for vertex in self.graph:
@@ -21,19 +22,23 @@ class Graph:
             if inDegree[vertex] == 0:
                 queue.append(vertex)
 
-        topOrder = []
+        cnt = 0
+
 
         while queue:
             s = queue.pop(0)
-            topOrder.append(s)
 
             for neighbor in self.graph[s]:
                 inDegree[neighbor] -= 1
                 if inDegree[neighbor] == 0:
                     queue.append(neighbor)
 
+            cnt += 1
 
-        print(*topOrder)
+        if cnt == self.V:
+            return False
+        else:
+            return True
             
 
 
@@ -46,4 +51,7 @@ g.addEdge(4, 1);
 g.addEdge(2, 3);
 g.addEdge(3, 1);
 
-g.topologicalOrder()
+if g.cycleDetect():
+    print("Cycle detected")
+else:
+    print("Cycle not detected")
