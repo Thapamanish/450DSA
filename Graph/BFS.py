@@ -12,7 +12,7 @@ class Graph:
         queue = []
         queue.append(v)
         visited.add(v)
-
+        print(self.graph)
         while queue:
             s = queue.pop(0)
             print(s)
