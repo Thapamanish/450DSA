@@ -37,7 +37,7 @@ def search(root, key):
         return search(root.right, key)
 
 
-r = Node(50)
+r = insertion(None, 10)
 r = insertion(r, 50)
 r = insertion(r, 30)
 r = insertion(r, 20)
