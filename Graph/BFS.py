@@ -12,10 +12,9 @@ class Graph:
         queue = []
         queue.append(v)
         visited.add(v)
-        print(self.graph)
         while queue:
             s = queue.pop(0)
-            print(s)
+            print(s, end = ' ')
             for neighbor in self.graph[s]:
                 if neighbor not in visited:
                     queue.append(neighbor)
@@ -41,3 +40,4 @@ g.addEdge(6, 7)
  
 
 g.bfs()
+print()
