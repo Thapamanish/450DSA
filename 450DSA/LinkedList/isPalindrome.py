@@ -9,7 +9,7 @@ def ispalindrome(head):
     stack = []
     ispalin = True
  
-    while temp != None:
+    while temp:
         stack.append(temp.data)
         temp = temp.next
 

@@ -29,6 +29,19 @@ class LinkedList:
 
         print()
 
+    def getMiddle(self, headNode):
+        if headNode is None:
+            return None
+
+        slowP = headNode
+        fastP = headNode
+
+        while fastP.next and fastP.next.next:
+            slowP = slowP.next
+            fastP = fastP.next.next
+
+        return slowP
+
     def sortedMerge(self, left, right):
         result = None
         if left is None:
@@ -45,20 +58,6 @@ class LinkedList:
             result.next = self.sortedMerge(left, right.next)
 
         return result
-
-
-    def getMiddle(self, headNode):
-        if headNode is None:
-            return None
-
-        slowP = headNode
-        fastP = headNode
-
-        while fastP.next is not None and fastP.next.next is not None:
-            slowP = slowP.next
-            fastP = fastP.next.next
-
-        return slowP
 
 
     def mergeSort(self, headNode):
