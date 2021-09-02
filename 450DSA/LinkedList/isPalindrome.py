@@ -13,7 +13,7 @@ def ispalindrome(head):
         stack.append(temp.data)
         temp = temp.next
 
-    while head != None:
+    while head:
         i = stack.pop()
         if head.data == i:
             ispalin = True
