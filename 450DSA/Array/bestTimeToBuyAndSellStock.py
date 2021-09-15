@@ -1,5 +1,9 @@
+#Question: Stock Buy Sell to Maximize Profit
+
 # Time Complexity: O(N)
 # Space Complexity: O(1)
+
+#Intitution : Modified Kadane's Algorithm, find minEle and maxProfit
 
 def solve(arr):
     maxProfit = 0
@@ -9,6 +13,8 @@ def solve(arr):
         maxProfit = max(maxProfit, arr[i] - minEle)
 
     return maxProfit
+
+
 
 
 

@@ -1,5 +1,6 @@
 # Time complexity: O(NlogN) + O(N) => O(NlogN) for sorting and O(N) for linear traversal 
-# Space somplexity: O(N) 
+# Space somplexity: O(1) -> generally output array isnot considerd as 
+                    # auxiliary space 
 def merge(intervals):
     intervals.sort()
     if len(intervals) == 0:
@@ -17,5 +18,5 @@ def merge(intervals):
 
 
 
-intervals = [[1,4],[0,4]]
+intervals = [[1,4],[7,7] ,[0,6]]
 print(merge(intervals))

@@ -13,9 +13,12 @@
 
 # Time complexity: O(n)
                   
-# Auxiliary Space: O(n) i.e. call stack
+# Auxiliary Space: O(n)
 
-# intution : use recurrsion i.e. DFS concept
+# intution : find max height of left and right subtree and tree and add them
+            # to find the diameter
+
+
 
 class Node:
     def __init__(self, data):
@@ -24,17 +27,16 @@ class Node:
         self.right = None
 
 
-def maxDepth(root):
-    if root is None:
+def diameter(root, maxDia):
+    if not root:
         return 0
 
-    lDepth = maxDepth(root.left)
-    rDepth = maxDepth(root.right)
+    lDepth = diameter(root.left, maxDia)
+    rDepth = diameter(root.right, maxDia)
+    maxDia[0] = max(maxDia[0], lDepth + rDepth + 1)
 
-    if lDepth > rDepth:
-        return lDepth + 1
-    else:
-        return rDepth + 1
+    return 1 + max(lDepth, rDepth)
+
 
 
 
@@ -47,5 +49,6 @@ root.right.left = Node(5)
 root.right.right = Node(6)
 root.right.left.left = Node(7)
 root.right.left.right = Node(8)
-
-print("The height of the tree is", maxDepth(root))
+maxDia = [0]
+diameter(root, maxDia)
+print(maxDia[0])

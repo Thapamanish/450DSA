@@ -1,4 +1,4 @@
-"""Question:  Construct the following tree
+"""Question:  print top view
                            1
                          /   \
                         /     \
@@ -11,36 +11,51 @@
                         7     8
 """
 
-# Time complexity: O(n)
+# Time complexity: O(n) + O(nlogn) i.e. nlogn for sorting
                   
-# Auxiliary Space: O(1)
+# Auxiliary Space: O(n) i.e. height of the tree
 
-# intution : use queue method i.e. BFS concept
-
+# intution : use level order traversal and use the horizontal distance concept from 
+            # vertical traversal
 
 class Node:
     def __init__(self, data):
         self.data = data
         self.left = None
         self.right = None
+        self.hd = 0
 
 
-def levelOrder(root):
-    if root is None:
+def topView(root):
+    if not root:
         return
 
     queue = []
     queue.append(root)
+    hd = 0
+    mp = {}
 
     while queue:
         node = queue.pop(0)
-        print(node.data, end = ' ')
+        hd = node.hd
 
-        if node.left is not None: #if node.left:
+        if hd not in mp:
+            mp[hd] = node.data
+
+        if node.left:
+            node.left.hd = hd - 1
             queue.append(node.left)
 
-        if node.right is not None: #if node.right:
+        if node.right:
+            node.right.hd = hd +  1
             queue.append(node.right)
+
+
+    ans = []
+    for i in sorted(mp):
+        ans.append(mp[i])
+
+    return ans
 
 
 
@@ -53,5 +68,4 @@ root.right.right = Node(6)
 root.right.left.left = Node(7)
 root.right.left.right = Node(8)
 
-levelOrder(root)
-print()
+print(*topView(root))

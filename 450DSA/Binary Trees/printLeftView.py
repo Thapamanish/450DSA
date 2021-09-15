@@ -1,4 +1,4 @@
-"""Question:  Construct the following tree
+"""Question:  print left view
                            1
                          /   \
                         /     \
@@ -13,9 +13,11 @@
 
 # Time complexity: O(n)
                   
-# Auxiliary Space: O(n) i.e. call stack
+# Auxiliary Space: O(n) i.e. height of the tree
 
-# intution : use recurrsion i.e. DFS concept
+# intution : basically question means to print the first node at every level from the left 
+             # side of the tree
+
 
 class Node:
     def __init__(self, data):
@@ -23,19 +25,22 @@ class Node:
         self.left = None
         self.right = None
 
-
-def maxDepth(root):
+def leftViewUtil(root, level, levelDict):
     if root is None:
-        return 0
+        return 
 
-    lDepth = maxDepth(root.left)
-    rDepth = maxDepth(root.right)
+    if level not in levelDict:
+        levelDict[level] = root.data
 
-    if lDepth > rDepth:
-        return lDepth + 1
-    else:
-        return rDepth + 1
+    leftViewUtil(root.left, level + 1, levelDict)
+    leftViewUtil(root.right, level + 1, levelDict)
 
+
+def leftView(root):  
+    levelDict = {}
+    leftViewUtil(root, 1, levelDict)
+    levelDict = list(levelDict.values())
+    return levelDict
 
 
 
@@ -48,4 +53,5 @@ root.right.right = Node(6)
 root.right.left.left = Node(7)
 root.right.left.right = Node(8)
 
-print("The height of the tree is", maxDepth(root))
+
+print(*leftView(root))

@@ -1,16 +1,22 @@
-
-""" Construct the following tree
-           1
-         /   \
-        /     \
-       2       3
-      /      /   \
-     /      /     \
-    4      5       6
-          / \
-         /   \
-        7     8
+"""Question:  traverse the following tree
+                           1
+                         /   \
+                        /     \
+                       2       3
+                      /      /   \
+                     /      /     \
+                    4      5       6
+                          / \
+                         /   \
+                        7     8
 """
+
+# Time complexity: O(n)
+                  
+# Auxiliary Space: O(n) i.e. height of binary tree
+
+# intution : use inorder(LRootR), preorder(RootLR) and postorder(LRRoot) properties
+
 
 class Node:
     def __init__(self, data):

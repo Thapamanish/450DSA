@@ -1,4 +1,4 @@
-"""Question:  Construct the following tree
+"""Question:  mirror (Invert) the tree below
                            1
                          /   \
                         /     \
@@ -13,9 +13,12 @@
 
 # Time complexity: O(n)
                   
-# Auxiliary Space: O(n) i.e. call stack
+# Auxiliary Space: O(n) i.e call stack(height of tree)
 
-# intution : use recurrsion i.e. DFS concept
+# intution : use postorder traversal and swap the two left
+            # and right nodes
+
+
 
 class Node:
     def __init__(self, data):
@@ -24,17 +27,20 @@ class Node:
         self.right = None
 
 
-def maxDepth(root):
-    if root is None:
-        return 0
+def inorderTraversal(root):
+    if root:
+        inorderTraversal(root.left)
+        print(root.data, end = ' ')
+        inorderTraversal(root.right)
 
-    lDepth = maxDepth(root.left)
-    rDepth = maxDepth(root.right)
 
-    if lDepth > rDepth:
-        return lDepth + 1
-    else:
-        return rDepth + 1
+def mirror(root):
+    if not root:
+        return
+
+    mirror(root.left)
+    mirror(root.right)
+    root.left, root.right = root.right, root.left
 
 
 
@@ -48,4 +54,7 @@ root.right.right = Node(6)
 root.right.left.left = Node(7)
 root.right.left.right = Node(8)
 
-print("The height of the tree is", maxDepth(root))
+inorderTraversal(root)
+mirror(root)
+print()
+inorderTraversal(root)

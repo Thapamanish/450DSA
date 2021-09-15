@@ -1,4 +1,4 @@
-"""Question:  Construct the following tree
+"""Question:  whether the tree is balanced or not ?
                            1
                          /   \
                         /     \
@@ -11,11 +11,12 @@
                         7     8
 """
 
-# Time complexity: O(n)
+# Time complexity: O(n) 
                   
-# Auxiliary Space: O(n) i.e. call stack
+# Auxiliary Space: O(n) i.e. height of the tree
 
-# intution : use recurrsion i.e. DFS concept
+# intution : use the concept of finding the height of the tree.
+
 
 class Node:
     def __init__(self, data):
@@ -24,19 +25,31 @@ class Node:
         self.right = None
 
 
-def maxDepth(root):
-    if root is None:
+def dfsHeight(root):
+    if not root:
         return 0
 
-    lDepth = maxDepth(root.left)
-    rDepth = maxDepth(root.right)
+    lDepth = dfsHeight(root.left)
+    if lDepth == -1:
+        return -1
 
-    if lDepth > rDepth:
-        return lDepth + 1
-    else:
-        return rDepth + 1
+    rDepth = dfsHeight(root.right)
+    if rDepth == -1:
+        return -1
+
+    if abs(lDepth - rDepth) > 1: 
+        return -1
+
+    return 1 + max(lDepth, rDepth)
 
 
+
+
+
+def isBalanced(root):
+    if not root:
+        return
+    return dfsHeight(root) != -1
 
 
 root = Node(1)
@@ -48,4 +61,4 @@ root.right.right = Node(6)
 root.right.left.left = Node(7)
 root.right.left.right = Node(8)
 
-print("The height of the tree is", maxDepth(root))
+print(isBalanced(root))
