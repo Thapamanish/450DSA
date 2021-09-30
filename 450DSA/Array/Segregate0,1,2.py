@@ -1,3 +1,12 @@
+# Question : program to segregate 0, 1, 2 without any algorithm
+
+# Time Complexity: O(n)
+
+# Space Complexity : O(1)
+
+# Intution : use three pointer technique 
+
+
 def solve(arr, n):
     low = 0
     mid = 0

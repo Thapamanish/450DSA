@@ -1,5 +1,10 @@
-# Time complexity: O(N)
-# Space complexity: O(1)
+# Question : program to find the next permutation
+
+# Time Complexity: O(n)
+
+# Space Complexity : O(1)
+
+# Intution : dictionary order 
 
 def solve(arr):
     n = len(arr)
@@ -8,6 +13,7 @@ def solve(arr):
         if arr[k] < arr[k + 1]:
             break
         k -= 1
+    
     if k < 0 :
         arr = arr[::-1]
     else:
@@ -22,5 +28,5 @@ def solve(arr):
 
 
 
-arr = [1,2]
+arr = [1,3,2]
 print(solve(arr))

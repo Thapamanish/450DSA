@@ -19,7 +19,8 @@ def isMajority(majEle, arr):
 
 def solve(arr):
     n = len(arr)
-    majIndex = count = 1
+    majIndex = 0  
+    count = 1
     for i in range(1, n):
         if arr[majIndex] == arr[i]:
             count += 1

@@ -1,4 +1,4 @@
-"""Question:  level order Traversal
+"""Question:  find the subtree with max sum
                            1
                          /   \
                         /     \
@@ -11,11 +11,14 @@
                         7     8
 """
 
-# Time complexity: O(n)
-                  
-# Auxiliary Space: O(1)
 
-# intution : use queue method i.e. BFS concept
+# Time complexity: O(n) 
+                  
+# Auxiliary Space: O(n) i.e. height of the tree
+
+# intution : use the concept of dfs
+
+
 
 
 class Node:
@@ -23,24 +26,26 @@ class Node:
         self.data = data
         self.left = None
         self.right = None
+def maxSumSubTreeUtil(root, ans):
+    if not root:
+        return 0
+
+    subTreeSum = root.data + maxSumSubTreeUtil(root.left, ans) \
+                    + maxSumSubTreeUtil(root.right, ans)
+
+    ans[0] = max(ans[0], subTreeSum)
+
+    return subTreeSum
 
 
-def levelOrder(root):
-    if root is None:
-        return
+def maxSumSubTree(root):
+    ans = [float('-INF')]
 
-    queue = []
-    queue.append(root)
+    maxSumSubTreeUtil(root, ans)
 
-    while queue:
-        node = queue.pop(0)
-        print(node.data, end = ' ')
+    return ans[0]
 
-        if node.left: 
-            queue.append(node.left)
 
-        if node.right: 
-            queue.append(node.right)
 
 
 
@@ -53,5 +58,6 @@ root.right.right = Node(6)
 root.right.left.left = Node(7)
 root.right.left.right = Node(8)
 
-levelOrder(root)
-print()
+print(maxSumSubTree(root))
+
+

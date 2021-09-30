@@ -1,3 +1,11 @@
+# Question : program to find a maximum and a minimum element in an array
+
+# Time Complexity: O(n)
+
+# Space Complexity : O(1)
+
+# Intution : use two pointer technique and divide and conquer method(tournament method)
+
 def solve(a, low, high, minEle, maxEle):
     if low == high:
         if minEle > a[low]:
@@ -35,7 +43,7 @@ def solve(a, low, high, minEle, maxEle):
 
 
 
-a = [10,20,0,90,56, -90]
+a = [10, 20, 0, 90, 56, -90]
 
 
 minEle, maxEle = float('INF'), float('-INF')

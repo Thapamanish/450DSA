@@ -9,17 +9,16 @@ def maxProfit(price, n):
     maxPrice = price[n-1]
  
     for i in range(n-2, 0, -1):
-        if price[i] > maxPrice:
-            maxPrice = price[i]
+        maxPrice = max(maxPrice, price[i])
 
         profit[i] = max(profit[i+1], maxPrice - price[i])
+
+    print(profit)
 
     minPrice = price[0]
  
     for i in range(1, n):
-        if price[i] < minPrice:
-            minPrice = price[i]
- 
+        minPrice = min(minPrice, price[i])
         profit[i] = max(profit[i-1], profit[i]+(price[i]-minPrice))
 
     result = profit[n-1]

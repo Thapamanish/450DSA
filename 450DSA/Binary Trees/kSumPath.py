@@ -1,4 +1,4 @@
-"""Question:  level order Traversal
+"""Question:  find the path whose sum is equal to K
                            1
                          /   \
                         /     \
@@ -11,11 +11,12 @@
                         7     8
 """
 
-# Time complexity: O(n)
-                  
-# Auxiliary Space: O(1)
 
-# intution : use queue method i.e. BFS concept
+# Time complexity: O(n * h) 
+                  
+# Auxiliary Space: O(n) i.e. height of the tree
+
+# intution : use the concept of preorder traversal
 
 
 class Node:
@@ -24,25 +25,35 @@ class Node:
         self.left = None
         self.right = None
 
+def kPathUtil(root, path, k):
+    global ans
 
-def levelOrder(root):
-    if root is None:
+    if not root:
         return
 
-    queue = []
-    queue.append(root)
+    path.append(root.data)
 
-    while queue:
-        node = queue.pop(0)
-        print(node.data, end = ' ')
-
-        if node.left: 
-            queue.append(node.left)
-
-        if node.right: 
-            queue.append(node.right)
+    kPathUtil(root.left, path, k)
+    kPathUtil(root.right, path, k)
 
 
+
+    temp = 0
+
+    for j in range(len(path) - 1, -1, -1):
+        temp += path[j]
+
+        if temp == k:
+            ans.append(list(path[j:]))
+
+
+    path.pop(-1)
+
+
+
+def kPath(root, k):
+    path = []
+    kPathUtil(root, path, k)
 
 root = Node(1)
 root.left = Node(2)
@@ -53,5 +64,13 @@ root.right.right = Node(6)
 root.right.left.left = Node(7)
 root.right.left.right = Node(8)
 
-levelOrder(root)
-print()
+ans = []
+k = 9
+kPath(root, k)
+print(ans)
+
+
+
+
+
+

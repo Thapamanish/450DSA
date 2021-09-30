@@ -1,5 +1,11 @@
-# Time complexity : O(nlogn)
-# Space complexity : O(1)
+# Question : program to minimize the height between longest and shortest tower
+
+# Time Complexity: O(n)
+
+# Space Complexity : O(1)
+
+# Intution : use two variable storing value of smallest and biggest tower. 
+
 
 
 def solve(a, k):
@@ -17,6 +23,5 @@ def solve(a, k):
 
 
 
-
-arr = [1, 5, 8, 10]
-print(solve(arr, 4))
+arr = [1, 1, 8, 10]
+print(solve(arr, 2))

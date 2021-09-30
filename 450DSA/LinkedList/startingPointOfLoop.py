@@ -1,17 +1,33 @@
-# Time complexity: O(N)
-# Space complexity : O(1)
+# Question: write a program to find the starting point of loop in a linked list
 
+# Time complexity: O(n) 
+                  
+# Auxiliary Space: O(1)
+
+# intution : checks for the loop using Floyd’s Cycle-Finding Algorithm
 
 class Node:
     def __init__(self, data):
         self.data = data
-        self.head = None
+        self.next = None
 
 
 
 class LinkedList:
     def __init__(self):
         self.head = None
+
+
+    def pushEnd(self, data):
+        if self.head is None:
+            self.head = Node(data)
+            return
+
+        current = self.head
+        while current.next:
+            current = current.next
+
+        current.next = Node(data)
 
 
 
@@ -33,7 +49,7 @@ class LinkedList:
                     fastP = fastP.next
 
 
-                return slowP.data
+                return fastP.data
 
         return -1
 
@@ -41,13 +57,13 @@ class LinkedList:
 
 
 ll = LinkedList()
-ll.head = Node(10)
-ll.head.next = Node(20)
-ll.head.next.next = Node(30)
-ll.head.next.next.next = Node(40)
-ll.head.next.next.next.next = Node(50)
+ll.pushEnd(10)
+ll.pushEnd(20)
+ll.pushEnd(30)
+ll.pushEnd(40)
+ll.pushEnd(50)
 
 
-ll.head.next.next.next.next.next = ll.head.next
+ll.head.next.next.next.next.next = ll.head.next.next
 
 print(ll.firstLoopNode())

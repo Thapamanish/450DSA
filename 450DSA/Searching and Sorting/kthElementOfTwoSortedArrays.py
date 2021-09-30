@@ -1,4 +1,4 @@
-# Question: find the pivot element in sorted and rotated array
+# Question: find the kth element in two sorted array
 
 # Time complexity: O(log(min(m, n)))
                   

@@ -1,3 +1,12 @@
+# Question: write a program to reverse a linkedlist in a group
+
+# Time complexity: O(n) 
+                  
+# Auxiliary Space: O(1)
+
+# intution : just reverse the link with respective to value of k
+
+
 class Node:
     def __init__(self, data):
         self.data = data

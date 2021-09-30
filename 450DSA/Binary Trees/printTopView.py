@@ -32,7 +32,6 @@ def topView(root):
 
     queue = []
     queue.append(root)
-    hd = 0
     mp = {}
 
     while queue:

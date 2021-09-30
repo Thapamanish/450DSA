@@ -1,5 +1,11 @@
-# Time complexity : O(N ^ 2)
-# Space complexity : O(N)
+# Question : program to find minimum number of jumps required to reach the
+            # end of the array
+
+# Time Complexity: O(n ^ 2)
+
+# Space Complexity : O(n)
+
+# Intution : use dynamic programming and begin from the end of the array 
 
 def minJumps(arr, n):
     dp = [0  for i in range(n)]

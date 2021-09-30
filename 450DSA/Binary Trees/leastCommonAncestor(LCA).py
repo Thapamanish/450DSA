@@ -1,4 +1,4 @@
-"""Question:  level order Traversal
+"""Question:  find the least common ancestor of two nodes 
                            1
                          /   \
                         /     \
@@ -11,11 +11,12 @@
                         7     8
 """
 
-# Time complexity: O(n)
-                  
-# Auxiliary Space: O(1)
 
-# intution : use queue method i.e. BFS concept
+# Time complexity: O(n) 
+                  
+# Auxiliary Space: O(n) i.e. height of the tree
+
+# intution : use the concept of dfs.
 
 
 class Node:
@@ -25,23 +26,21 @@ class Node:
         self.right = None
 
 
-def levelOrder(root):
-    if root is None:
-        return
+def lca(root, n1, n2):
+    if not root or root.data == n1 or root.data == n2:
+        return root
 
-    queue = []
-    queue.append(root)
+    leftLCA = lca(root.left, n1, n2)
+    rightLCA = lca(root.right, n1, n2)
 
-    while queue:
-        node = queue.pop(0)
-        print(node.data, end = ' ')
+    if not leftLCA:
+        return rightLCA
 
-        if node.left: 
-            queue.append(node.left)
+    elif not rightLCA:
+        return leftLCA
 
-        if node.right: 
-            queue.append(node.right)
-
+    else:
+        return root
 
 
 root = Node(1)
@@ -53,5 +52,7 @@ root.right.right = Node(6)
 root.right.left.left = Node(7)
 root.right.left.right = Node(8)
 
-levelOrder(root)
-print()
+print(lca(root, 8, 6).data)
+
+
+

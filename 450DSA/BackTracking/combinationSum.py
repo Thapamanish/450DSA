@@ -20,8 +20,6 @@ def combinationSum(ind, target, arr, ans, temp):
 
 
 
-
-
 arr = [2,4,6,8]
 target = 8
 ans = []

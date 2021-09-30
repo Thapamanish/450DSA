@@ -1,6 +1,11 @@
-# Time Complexity : O(N)
-# Space Complexity : O(1)
+# Question: write a program to add a digit to a linked list
 
+# Time complexity: O(n) 
+                  
+# Auxiliary Space: O(1)
+
+# intution : reverse the list and do a simple addition using carry concept
+            # and reverse the list back
 
 class Node:
     def __init__(self, data):
@@ -12,15 +17,27 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
+    def pushEnd(self, data):
+        if self.head is None:
+            self.head = Node(data)
+            return 
+
+        current = self.head
+
+        while current.next:
+            current = current.next
+
+        current.next = Node(data)
+
 
     def reverseList(self):
-        curr = self.head
+        current = self.head
         prev = None
-        while curr:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
+        while current:
+            temp = current.next
+            current.next = prev
+            prev = current
+            current = temp
 
         self.head = prev
 
@@ -31,40 +48,42 @@ class LinkedList:
             return 
         self.reverseList()
         carry = digit
-        curr = self.head
+        current = self.head
 
         while carry:
-            newSum = curr.data + carry
+            newSum = current.data + carry
 
-            curr.data = newSum % 10
+            current.data = newSum % 10
             carry = newSum // 10
 
-            if not curr.next:
+            if not current.next:
                 break
 
-            curr = curr.next
+            current = current.next
 
         if carry > 0:
-            curr.next = Node(carry)
+            current.next = Node(carry)
 
         self.reverseList()
 
 
+
     def printList(self):
-        curr = self.head
-        while curr:
-            print(curr.data, end = ' ')
-            curr = curr.next
+        current = self.head
+        while current:
+            print(current.data, end = ' ')
+            current = current.next
 
         print()
 
 
 
 ll = LinkedList()
-ll.head = Node(9)
-ll.head.next = Node(9)
-ll.head.next.next = Node(9)
-ll.head.next.next.next = Node(9)
+ll.pushEnd(9)
+ll.pushEnd(9)
+ll.pushEnd(9)
+ll.pushEnd(9)
+
 ll.printList()
 ll.addDigit(1)
 ll.printList()

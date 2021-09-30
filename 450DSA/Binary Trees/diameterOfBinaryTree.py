@@ -42,7 +42,7 @@ def diameter(root, maxDia):
 
 
 root = Node(1)
-root.left = Node(2)
+root.left = Node(2) 
 root.right = Node(3)
 root.left.left = Node(4)
 root.right.left = Node(5)

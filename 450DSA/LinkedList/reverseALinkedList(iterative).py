@@ -1,3 +1,12 @@
+# Question: write a program to reverse a linked list iteratively
+
+# Time complexity: O(n) 
+                  
+# Auxiliary Space: O(1)
+
+# intution : just reverse the link
+
+
 class Node:
 	def __init__(self, data):
 		self.data = data

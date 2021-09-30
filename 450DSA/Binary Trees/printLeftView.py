@@ -38,7 +38,7 @@ def leftViewUtil(root, level, levelDict):
 
 def leftView(root):  
     levelDict = {}
-    leftViewUtil(root, 1, levelDict)
+    leftViewUtil(root, 0, levelDict)
     levelDict = list(levelDict.values())
     return levelDict
 

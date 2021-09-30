@@ -1,4 +1,4 @@
-"""Question:  level order Traversal
+"""Question:  Maximum sum of nodes in Binary tree such that no two are adjacent
                            1
                          /   \
                         /     \
@@ -11,11 +11,15 @@
                         7     8
 """
 
-# Time complexity: O(n)
-                  
-# Auxiliary Space: O(1)
 
-# intution : use queue method i.e. BFS concept
+# Time complexity: O(n) 
+                  
+# Auxiliary Space: O(n) i.e. height of the tree
+
+# intution : use the concept of dynamic programming as in max sum of adjacent
+            #element in an array
+
+
 
 
 class Node:
@@ -25,23 +29,24 @@ class Node:
         self.right = None
 
 
-def levelOrder(root):
-    if root is None:
-        return
+def maxSumUtil(root):
+    if not root:
+        dpSum = [0 , 0]
+        return dpSum
 
-    queue = []
-    queue.append(root)
+    sum1 = maxSumUtil(root.left)
+    sum2 = maxSumUtil(root.right)
+    dpSum = [0, 0]
 
-    while queue:
-        node = queue.pop(0)
-        print(node.data, end = ' ')
+    dpSum[0] = sum1[1] + sum2[1] + root.data
 
-        if node.left: 
-            queue.append(node.left)
+    dpSum[1] = max(sum1[0], sum1[1]) + max(sum2[0], sum2[1])
 
-        if node.right: 
-            queue.append(node.right)
+    return dpSum
 
+def maxSum(root):
+    res = maxSumUtil(root)
+    return max(res[0], res[1])
 
 
 root = Node(1)
@@ -53,5 +58,7 @@ root.right.right = Node(6)
 root.right.left.left = Node(7)
 root.right.left.right = Node(8)
 
-levelOrder(root)
-print()
+
+print(maxSum(root))
+
+

@@ -1,3 +1,10 @@
+# Question: write a program to reverse a linked list recursively
+
+# Time complexity: O(n) 
+                  
+# Auxiliary Space: O(n)
+
+# intution : just reverse the link
 
 class Node:
     def __init__(self, data):

@@ -31,10 +31,7 @@ def maxDepth(root):
     lDepth = maxDepth(root.left)
     rDepth = maxDepth(root.right)
 
-    if lDepth > rDepth:
-        return lDepth + 1
-    else:
-        return rDepth + 1
+    return 1 + max(lDepth, rDepth)
 
 
 

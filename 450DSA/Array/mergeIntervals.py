@@ -1,6 +1,15 @@
-# Time complexity: O(NlogN) + O(N) => O(NlogN) for sorting and O(N) for linear traversal 
-# Space somplexity: O(1) -> generally output array isnot considerd as 
+# Question : program to merge the overlapped intervals
+
+# Time Complexity: O(n * log(n)) + O(n) => O(n * log(n)) 
+                #  for sorting and O(N) for linear traversal
+
+# Space Complexity :  O(1) -> generally output array isnot considerd as 
                     # auxiliary space 
+
+# Intution : sort the interval and check the end time of first interval with
+            # the start time of second interval
+
+
 def merge(intervals):
     intervals.sort()
     if len(intervals) == 0:
@@ -12,10 +21,9 @@ def merge(intervals):
             ans[-1][1] = max(num[1], ans[-1][1])
 
         else:
-            ans.append(list(num))
+            ans.append(num)
 
     return ans
-
 
 
 intervals = [[1,4],[7,7] ,[0,6]]

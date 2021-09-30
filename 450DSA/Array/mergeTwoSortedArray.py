@@ -1,6 +1,10 @@
-# Time complexity: O(N * M)
-# Space complexity: O(1)
+# Question : program to merge two sorted arrays
 
+# Time Complexity: O(m * n)
+
+# Space Complexity : O(1)
+
+# Intution : use two pointer technique 
 
 a = [1,3,5,7]
 b = [2,4,6,8]
@@ -14,3 +18,4 @@ while a and b and i < len(a):
     else:
         i += 1
 print(a, b)
+

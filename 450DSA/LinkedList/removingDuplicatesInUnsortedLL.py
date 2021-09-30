@@ -1,5 +1,10 @@
-# Time Complexity : O(N)
-# Space Complexity : O(1)
+# Question: write a program to delete duplicate from an unsorted linked list.
+
+# Time complexity: O(n) 
+                  
+# Auxiliary Space: O(n)
+
+# intution : use a visited set to keep a track of the elements.
 
 
 class Node:
@@ -11,18 +16,29 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
+    def pushEnd(self, data):
+        if self.head is None:
+            self.head = Node(data)
+            return
+
+        current = self.head
+        while current.next:
+            current = current.next
+
+        current.next = Node(data)
 
     def removeDuplicate(self):
         visited = set()
-        temp = self.head
-        visited.add(temp.data)
+        current = self.head
+        visited.add(current.data)
 
-        while temp.next:
-            if temp.next.data not in visited:
-                visited.add(temp.next.data)
-                temp = temp.next
+        while current.next:
+            if current.next.data not in visited:
+                visited.add(current.next.data)
+                current = current.next
+
             else:
-                temp.next = temp.next.next
+                current.next = current.next.next
 
 
     def printList(self):
@@ -36,13 +52,14 @@ class LinkedList:
 
 
 ll = LinkedList()
-ll.head = Node(10)
-ll.head.next = Node(30)
-ll.head.next.next = Node(20)
-ll.head.next.next.next = Node(10)
-ll.head.next.next.next.next = Node(30)
-ll.head.next.next.next.next.next = Node(10)
-ll.head.next.next.next.next.next.next = Node(50)
+ll.pushEnd(10)
+ll.pushEnd(30)
+ll.pushEnd(20)
+ll.pushEnd(10)
+ll.pushEnd(30)
+ll.pushEnd(10)
+ll.pushEnd(50)
+
 
 
 ll.printList()

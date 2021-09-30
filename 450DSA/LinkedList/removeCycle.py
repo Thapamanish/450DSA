@@ -1,4 +1,4 @@
-# Question: write a program to detect a loop in a linked list
+# Question: write a program to remove a loop in a linked list.
 
 # Time complexity: O(n) 
                   
@@ -10,8 +10,7 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
- 
- 
+
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -31,37 +30,49 @@ class LinkedList:
 
 
     def printList(self):
-        current = self.head
+        current= self.head
+
         while current:
-            print(current.data, end = ' ')
+            print(current.data, end= ' ')
             current = current.next
 
         print()
- 
- 
 
-    
-    def detectLoop(self):
+
+    def removeCycle(self):
+        if self.head is None:
+            return -1
+
         slowP = self.head
         fastP = self.head
+
         while slowP and fastP and fastP.next:
             slowP = slowP.next
             fastP = fastP.next.next
+
             if slowP == fastP:
-                return True
- 
+                slowP = self.head
+                while slowP.next != fastP.next:
+                    slowP = slowP.next
+                    fastP = fastP.next
+
+                fastP.next = None
+
+
  
 
-llist = LinkedList()
-llist.pushEnd(20)
-llist.pushEnd(4)
-llist.pushEnd(15)
-llist.pushEnd(10)
- 
-llist.printList()
-llist.head.next.next.next.next = llist.head
+ll = LinkedList()
+ll.pushEnd(10)
+ll.pushEnd(20)
+ll.pushEnd(30)
+ll.pushEnd(40)
+ll.pushEnd(50)
 
-if(llist.detectLoop()):
-    print ("Found Loop")
-else:
-    print ("No Loop")
+ll.printList()
+
+ll.head.next.next.next.next.next = ll.head.next.next
+ 
+ll.removeCycle()
+ 
+print("Linked List after removing loop")
+ll.printList()

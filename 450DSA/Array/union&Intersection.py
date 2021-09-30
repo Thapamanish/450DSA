@@ -1,5 +1,10 @@
-# Time complexity : O(m + n)
-# Space complexity : O(m + n)
+# Question : program to find the union and intersection of two array
+
+# Time Complexity: O(m + n)
+
+# Space Complexity : O(m + n)
+
+# Intution : use two pointer technique 
 
 def unionAndIntersection(arr1, arr2, m, n):
     i = 0
@@ -30,8 +35,6 @@ def unionAndIntersection(arr1, arr2, m, n):
         j += 1
 
     return ansU, ansI
-
-
 
 
 

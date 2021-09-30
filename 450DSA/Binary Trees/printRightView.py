@@ -26,23 +26,25 @@ class Node:
         self.right = None
 
 
-def rightViewUtil(root, level, ans):
+def rightViewUtil(root, level, levelDict):
     if not root:
         return
 
-    if len(ans) == level:
-        ans.append(root.data)
+    if level not in levelDict:
+        levelDict[level] = root.data
 
-    rightViewUtil(root.right, level + 1, ans)
-    rightViewUtil(root.left, level + 1, ans)
+    rightViewUtil(root.right, level + 1, levelDict)
+    rightViewUtil(root.left, level + 1, levelDict)
 
 
 def rightView(root):
     if not root:
         return
 
-    ans = []
-    rightViewUtil(root, 0, ans)
+    levelDict = {}
+    rightViewUtil(root, 1, levelDict)
+    ans = list(levelDict.values())
+
     return ans
 
 

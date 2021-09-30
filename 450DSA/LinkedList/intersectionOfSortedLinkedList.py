@@ -1,10 +1,40 @@
-# https://www.geeksforgeeks.org/intersection-of-two-sorted-linked-lists/
+# Question: write a program to find the intersection of two sorted linked list
+
+# Time complexity: O(m + n) 
+                  
+# Auxiliary Space: O(m + n)
+
+# intution : two pointer technique and a dummy node
 
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def pushEnd(self, data):
+        if self.head is None:
+            self.head = Node(data)
+            return
+
+        current = self.head
+        while current.next:
+            current = current.next
+
+        current.next = Node(data)
+
+
+    def printList(self):
+        current = self.head
+
+        while current:
+            print(current.data, end = ' ')
+            current = current.next
+
+        print()
 
 def intersection(head1, head2):
     dummy = Node(0)
@@ -26,21 +56,26 @@ def intersection(head1, head2):
     return dummy.next
 
 
-llist1 = Node(1)
-llist1.next = Node(2)
-llist1.next.next = Node(3)
-llist1.next.next.next = Node(4)
-llist1.next.next.next.next = Node(6)
 
-llist2 = Node(2)
-llist2.next = Node(4)
-llist2.next.next = Node(6)
-llist2.next.next.next = Node(8)
+ll1 = LinkedList()
+ll1.pushEnd(1)
+ll1.pushEnd(2)
+ll1.pushEnd(3)
+ll1.pushEnd(4)
+ll1.pushEnd(6)
+
+ll1.printList()
 
 
-llist3 = intersection(llist1, llist2)
+ll2 = LinkedList()
+ll2.pushEnd(2)
+ll2.pushEnd(4)
+ll2.pushEnd(6)
+ll2.pushEnd(8)
 
-temp = llist3
-while temp:
-    print(temp.data, end = ' ')
-    temp = temp.next
+ll2.printList()
+
+ll3 = LinkedList()
+ll3.head = intersection(ll1.head, ll2.head)
+
+ll3.printList()

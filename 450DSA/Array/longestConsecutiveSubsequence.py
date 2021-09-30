@@ -22,5 +22,8 @@ def solve(arr, n):
 
 
 
-arr = [1, 9, 3, 10, 4, 20, 2]
+
+
+
+arr = [1, 9, 3, 10, 4,2 ]
 print(solve(arr, len(arr)))
