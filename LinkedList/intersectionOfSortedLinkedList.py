@@ -40,7 +40,7 @@ def intersection(head1, head2):
     dummy = Node(0)
     temp = dummy
 
-    while head1 != None and head1 != None:
+    while head1 != None and head2 != None:
         if head1.data == head2.data:
             temp.next = Node(head1.data)
             temp = temp.next

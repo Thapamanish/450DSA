@@ -1,4 +1,4 @@
-# """Question:  whether the tree is balanced or not
+# """Question:  convert to the binary search tree in minmam swaps
 #                            1
 #                          /   \
 #                         /     \

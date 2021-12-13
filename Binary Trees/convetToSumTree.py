@@ -25,7 +25,7 @@ class Node:
     self.right = None
 
 def inorderTraversal(root):
-  if not root:
+  if not root: 
     return
 
   print(root.data, end = ' ')
